@@ -9,8 +9,8 @@ let btnStop = document.querySelector('.btn-stop');
 let btnReset = document.querySelector('.btn-reset');
 let btnLap = document.querySelector('.btn-lap');
 let interval;
-let lapTimes = []; // Array to store lap times
-let lapList = document.createElement('ul'); // Create <ul> element for lap times
+let lapTimes = [];
+let lapList = document.createElement('ul');
 let lapListContainer = document.querySelector('.lap-times-container');
 
 btnStart.addEventListener('click', () => {
@@ -30,14 +30,12 @@ btnReset.addEventListener('click', () => {
     getSeconds.innerHTML = '00';
     getTens.innerHTML = '00';
     getMins.innerHTML = '00';
-    lapTimes = []; // Reset lap times
-    lapList.innerHTML = ''; // Clear lap list
+    lapTimes = [];
+    lapList.innerHTML = ''; 
 });
 
 btnLap.addEventListener('click', () => {
-    // Store the current time as a lap time
     lapTimes.push(`${mins}:${seconds}:${tens}`);
-    // Display lap times
     displayLapTimes();
 });
 
@@ -70,14 +68,11 @@ function startTimer() {
 }
 
 function displayLapTimes() {
-    // Clear previous lap times
     lapList.innerHTML = '';
-    // Populate lap list with lap times
     lapTimes.forEach((lapTime, index) => {
         let lapItem = document.createElement('li');
         lapItem.textContent = `Lap ${index + 1}: ${lapTime}`;
         lapList.appendChild(lapItem);
     });
-    // Append lap list to lap list container
     lapListContainer.appendChild(lapList);
 }
